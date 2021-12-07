@@ -1,0 +1,29 @@
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, 
+body, 
+p
+
+ {
+    font-family: 'Yatra One', cursive;
+  font-size: 50px;
+  font-style: normal;
+  line-height: 2;
+  color:blue;
+background-color:cornsilk;
+
+}
+
+h1 
+{
+    color:blue;
+    text-decoration: none;
+    font-size:60px;
+    border-bottom: blue 0.125em solid;
+
+}
