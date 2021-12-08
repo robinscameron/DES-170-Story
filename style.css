@@ -47,12 +47,17 @@ height:auto;
 @media screen and (max-width: 550px) {
   html,
   body, 
-  p,
-  .h1 {
+  p
+  {
     font-size: 13px;
     line-height: 1.1;
   }
 
+  h1 {
+    font-size: 17px;
+    line-height: 1.1;
+
+  }
   .container {
     display:grid;
     grid-template-columns: 1fr;
