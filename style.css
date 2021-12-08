@@ -43,3 +43,28 @@ height:auto;
   margin-right:100px;
 
 }
+
+@media screen and (max-width: 550px) {
+  html,
+  body, 
+  p,
+  .h1 {
+    font-size: 13px;
+    line-height: 1.1;
+  }
+
+  .container {
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:none;
+    
+  }
+  
+  .row {
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:none;
+  }
+
+  
+} 
