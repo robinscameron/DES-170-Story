@@ -103,12 +103,31 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
   display: none;  
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Karla&display=swap'); */
+
+/* @font-face {
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/karla-v13-latin-regular.eot'); /* IE9 Compat Modes 
+    src: local('Karla'), local('Karla-Regular'),
+         url('../fonts/karla-v13-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 
+         url('../fonts/karla-v13-latin-regular.woff2') format('woff2'), /* Super Modern Browsers 
+         url('../fonts/karla-v13-latin-regular.woff') format('woff'), /* Modern Browsers 
+         url('../fonts/karla-v13-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS 
+         url('../fonts/karla-v13-latin-regular.svg#Karla') format('svg'); /* Legacy iOS 
+  }
+*/
+
+@font-face {
+  font-family: 'Karla';
+  src: url(Fonts/'karla-v13-latin-regular.woff2');
+}
 
 body {
 background-color:#D7FBFC; 
   color: black;
- font-family: 'Karla', sans-serif;
+ font-family: 'Karla', 'Karla-Regular', sans-serif;
   font-size: 24px; 
   font-style: normal;
   font-variant: normal; 
