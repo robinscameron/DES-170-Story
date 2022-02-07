@@ -99,7 +99,7 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
 	<tw-storydata name="Twine Storybuilding" startnode="10" creator="Twine" creator-version="2.3.15" ifid="0DDE440D-72DE-4756-BB5E-CFB42B0B75C4" zoom="1" format="SugarCube" format-version="2.34.1" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">#ui-bar{
-  /* To hide the left hand bar completely, uncomment the line below*/
+ 
   display: none;  
 }
 
@@ -221,10 +221,10 @@ code{
   line-height: 28px;
   background-color: #F0FFFF;
   border: 1px solid #999;
-  display: block;
-  max-width:450px;
-  padding: 20px;
-  margin:20px;
+  display: inline-block;
+  max-width: 375px;
+  padding: 30px;
+  margin: 20px;
 }
  
 
@@ -285,13 +285,11 @@ This example is for a star:
 
 Variables are useful for storing data that may change or be referenced throughout the course of your game.
 
+To modify the values contained within variables, see the documentation for {{{&lt;&lt;set&gt;&gt;}}} macro and setter links.
 
+To print the values contained within variables, see the documentation for naked variable markup and the {{{&lt;&lt;print&gt;&gt;, &lt;&lt;=&gt;&gt;, and &lt;&lt;-&gt;&gt; macros.}}}
 
-To modify the values contained within variables, see the {{{&lt;&lt;set&gt;&gt;}}} macro and setter links.
-
-To print the values contained within variables, see the naked variable markup and the {{{&lt;&lt;print&gt;&gt;, &lt;&lt;=&gt;&gt;, and &lt;&lt;-&gt;&gt; macros.}}}
-
-To control aspects of your project based on the values contained within variables, see the {{{&lt;&lt;if&gt;&gt; and &lt;&lt;switch&gt;&gt; macros.}}}
+To control aspects of your project based on the values contained within variables, see the documentation for {{{&lt;&lt;if&gt;&gt; and &lt;&lt;switch&gt;&gt; macros.}}}
  
 The names of both story and temporary variables have a certain format that they must follow—which signifies that they are variables and not some other kind of data.
 
@@ -300,14 +298,10 @@ The very first, and mandatory, character is their sigil, which denotes whether t
 
 {{{/* Story variables */
 $cash
-$hasKeyCard5
-$met_alice
 $TIMES_POKED_MR_BEAR
 
 /* Temporary variables */
-_i
-_something2
-_some_loop_value
+_something_important
 _COUNT}}}
 
 For example, best friends may change in your game later on but the label
@@ -477,9 +471,8 @@ Config.ui.stowBarInitially = true;//do this, like what is it for?
 
 [[Adding Fonts + Icons]] 
 
-[[Home]]</tw-passagedata><tw-passagedata pid="7" name="Adding Javascript" tags="" position="926,508" size="100,100">&lt;i class=&quot;fa&quot;&gt;&amp;#xe800;&amp;nbsp;&lt;/i&gt; 
+[[Home]]</tw-passagedata><tw-passagedata pid="7" name="Adding Javascript" tags="" position="924,509" size="100,100">&lt;i class=&quot;fa&quot;&gt;&amp;#xe800;&amp;nbsp;&lt;/i&gt; 
 !Adding in Javascript Code
-
 
 A few ways to add Javascript 
 
@@ -489,15 +482,196 @@ Create a new passage and use the script tag to include custom Javascript in your
 
 &lt;img src=&quot;https://robinscameron.github.io/DES-170-Story/media/script.png&quot;&gt;
 
+In the passage area, write:
+{{{//requires jquery}}}
 
+&lt;img src=&quot;https://robinscameron.github.io/DES-170-Story/media/jQuery.png&quot;&gt;
 
-2
+2 
 
-
-
+add in the {{{&lt;&lt;script&gt;&gt;}}} tag to include custom Javascript directly in your passage
 
 3
 
+add in Javascript in the Edit Story Javascript menu
+
+&lt;img src=&quot;https://robinscameron.github.io/DES-170-Story/media/java_menu.png&quot;&gt;
+
+!If/Else
+
+You can create if/else statements:
+
+{{{&lt;&lt;set $teacup to &quot;blue&quot;&gt;&gt;
+
+Alice picks up the teacup
+&lt;&lt;if $teacup is &quot;blue&quot;&gt;&gt;
+    and notices a Dormouse, fast asleep inside of it.
+&lt;&lt;else&gt;&gt;
+    and takes a long sip.
+&lt;&lt;/if&gt;&gt;}}}
+
+
+{{{&lt;&lt;set $animal to &quot;horse&quot;&gt;&gt;
+
+&lt;&lt;if $animal is &quot;dog&quot;&gt;&gt;
+It’s a dog!
+&lt;&lt;else&gt;&gt;
+It’s a horse!
+&lt;&lt;/if&gt;&gt;}}}
+
+!Calling Functions
+
+{{{setup.hello = function (name) {
+	return &quot;Hello ‘ + name + ‘, how are you?’; };
+	
+	/*include the setup object’s name when you call such a function*/
+	
+	&lt;&lt;= setup.hello(‘John’)&gt;&gt;
+	}}}
+
+
+
+!Setting Objects
+
+You can give objects specific properties:
+
+{{{ &lt;&lt;set $good = {
+}&gt;&gt;
+
+&lt;&lt;set $good= {
+  property1: &quot;iceCream&quot;,
+  property2: 3,
+  property3: $chips,
+}&gt;&gt;}}}
+
+You can give people specific attributes:
+
+{{{&lt;&lt;set $Lucy = {
+height: 165,
+age: 26,
+occupation: &quot;Designer&quot;
+}&gt;&gt;}}}
+
+{{{&lt;&lt;set 
+$Lucy.hairColor = &quot;red&quot;,
+$Lucy.hasPets = &quot;false&quot; &gt;&gt;}}}
+
+You can also change those attributes later on if you want with input
+
+{{{Hello, &lt;&lt;print $player.name&gt;&gt;!
+
+What color would you like to dye your hair?
+
+[[Blonde][$player.hair = &quot;Blonde&quot;]]
+[[Brown][$player.hair = &quot;Brown&quot;]]
+[[Black][$player.hair = &quot;Black&quot;]]
+[[Red][$player.hair = &quot;Red&quot;]]}}}
+
+
+!Timed Text
+
+ Insert some text after 5 seconds with a transition
+
+
+{{{I want to go to... &lt;&lt;timed 5s t8n&gt;&gt; 
+WONDERLAND!&lt;&lt;/timed&gt;&gt;}}}
+
+
+Replace some text after 10 seconds
+
+
+{{{I like green &lt;span id=&quot;eggs&quot;&gt;eggs&lt;/span&gt; and ham!\
+&lt;&lt;timed 10s&gt;&gt;&lt;&lt;replace &quot;#eggs&quot;&gt;&gt;pancakes&lt;&lt;/replace&gt;&gt;&lt;&lt;/timed&gt;&gt;}}}
+
+Insert some text in 2 second intervals three times (at: 2s, 4s, 6s)
+
+{{{&lt;&lt;timed 2s&gt;&gt;Hi! Ho!
+&lt;&lt;next&gt;&gt;Hi! Ho!
+&lt;&lt;next&gt;&gt;It’s off to work we go!
+&lt;&lt;/timed&gt;&gt;}}}
+
+
+
+Text that displays sequentially on a timer
+
+{{{&lt;&lt;silently&gt;&gt; &lt;&lt;set $choice to 0&gt;&gt; &lt;&lt;timed 4s&gt;&gt;
+	&lt;&lt;set $choice to 1&gt;&gt; &lt;&lt;next 3s&gt;&gt;
+	&lt;&lt;set $choice to 2&gt;&gt; &lt;&lt;next 2s&gt;&gt;
+	&lt;&lt;set $choice to 3&gt;&gt; &lt;&lt;next 1s&gt;&gt;
+	&lt;&lt;set $choice to 4&gt;&gt;&lt;&lt;/timed&gt;&gt;
+&lt;&lt;silently&gt;&gt;}}}
+
+
+!Changing Objects with a hover state
+
+If you want it so that when someone hovers the text disappears, You would add this directly into to your passage:
+
+There is a spooky UFO in the sky. {{{&lt;div class=&quot;aliens&quot;&gt;}}}When you look at it, it disappears.{{{&lt;/div&gt;}}}
+But you’re sure it’s there.
+
+Then in your css you could call out your div tag
+{{{.aliens:hover {
+opacity: 0;
+transition: 1s all ease;
+}
+}}}
+
+!On Click Event
+
+In your passage you&#39;d add
+{{{
+
+/* to output 
+‘Hello World’ */
+
+&lt;button onclick=
+&quot;myFunction()&quot;&gt;Click me&lt;/button&gt;
+&lt;p id=&quot;demo&quot;&gt;&lt;/p&gt; 
+}}}
+
+{{{&lt;&lt;script&gt;&gt;
+function myFunction() {
+  document.getElementById(&quot;demo&quot;).innerHTML = &quot;Hello World&quot;;
+}
+&lt;&lt;/script&gt;&gt;}}}
+
+
+!Browser Alert
+
+To make something show up as a browser alert you&#39;d use the following code:
+
+{{{&lt;&lt;link ‘Click me!’&gt;&gt;
+  &lt;&lt;script&gt;&gt;
+    Dialog.setup(‘Hello!’);
+    Dialog.wiki(Story.get(‘greetings’).processText());
+    Dialog.open();
+  &lt;&lt;/script&gt;&gt; &lt;&lt;/link&gt;&gt;}}}
+
+
+You can even adjust the look of the alert in CSS
+
+{{{#ui-dialog-body {
+  color: purple;
+  background-color: white;
+ }
+}}}
+
+
+Play around with it, if it breaks google the error code and refine till you get it.
+
+There are many resources that you can find here are a few to start:
+
+[[Twine Discord Q+A|https://discord.com/invite/n5dJvPp]]
+
+[[HiEv Sample Code, you can download and look at this directly in twine|https://qjzhvmqlzvoo5lqnrvuhmg-on.drv.tw/UInv/Sample_Code.html#Main%20Menu]]
+
+[[SugarCube v2 Doc|https://www.motoslave.net/sugarcube/2/docs/]]
+
+[[Twine Cookbook|https://twinery.org/cookbook/]]
+
+[[Search the Read-Only Forum (someone else maybe had the same issue)|https://twinery.org/forum/]]
+
+[[W3 Schools on Javascript|https://www.w3schools.com/js/default.asp]]
 
 [[Variables]] 
 
@@ -547,7 +721,7 @@ Mary picks up the sword
 
 !!Player Name
 
-If you want to have an input for the user you&#39;d use the code below. You can read this code below as saying: &quot;Twine! Make a text input box. Whatever the user types in, remember it in a variable named $player_name. Put the text &#39;Your name&#39; inside the text box at first, and when the reader submits their entry, take them to the passage called Greetings.”
+If you want to have an input for the user you&#39;d use the code below. Basically you&#39;re telling the code: Make a text input box. Whatever the user types in, remember it in a variable named $player_name. Put the text &#39;Your name&#39; inside the text box, and then take them to the passage called Greetings.
 
 {{{
 Passage name: Welcome!
@@ -562,21 +736,25 @@ Passage body:
 !!Display
 The display macro is great for when part of the text needs to be repeated many times in your story.
 
-For example, if Mary is lost in the forest, you might want to repeat descriptions to indicate that Mary has already tried walking down a specific path.
+For example, if Mary is lost in the city, you might want to repeat descriptions to indicate that Mary has already tried walking down a specific road.
 
-First, you would create two passages in Twine with the name &quot;Path&quot; and the other named &quot;Forest&quot;. Then you write your description in the passage &quot;Path&quot;. Then, back in your &quot;Forest&quot; passage, you would write something like this:
+First, you would create two passages in Twine with the name &quot;Street&quot; and the other named &quot;City&quot;. Then you write your description in the passage &quot;Street&quot;. Then, back in your &quot;City&quot; passage, you would write something like this:
 
-{{{Mary walks down the path on the right.
+{{{Mary walks in down the street and makes a left.
 
-&lt;&lt;include &quot;Path&quot;&gt;&gt;}}}
+&lt;&lt;include &quot;Street&quot;&gt;&gt;}}}
 
 [[More on Macros here|https://www.motoslave.net/sugarcube/2/docs/#macros]]
+
+[[Custom Macros for Sugarcube Code snippets|https://github.com/ChapelR/custom-macros-for-sugarcube-2/blob/master/docs/README.md]]
+
+[[Demo for custom Macros|https://github.com/ChapelR/custom-macros-for-sugarcube-2/blob/master/docs/README.md]]
 
 [[Variables]] 
 
 [[Adding Javascript]] 
 
-[[Home]]</tw-passagedata><tw-passagedata pid="9" name="Assignment Story" tags="" position="47,369" size="100,100">&lt;i class=&quot;fa&quot;&gt;&amp;#xe80a;&amp;nbsp;&lt;/i&gt; 
+[[Home]]</tw-passagedata><tw-passagedata pid="9" name="Assignment Story" tags="" position="46,369" size="100,100">&lt;i class=&quot;fa&quot;&gt;&amp;#xe80a;&amp;nbsp;&lt;/i&gt; 
 !Assignment Story
 
 With a partner you will tell a choose your own adventure story by creating an engaging game with Twine. 
